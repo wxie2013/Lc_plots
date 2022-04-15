@@ -204,7 +204,7 @@ void combine_PbPb_LcD0(){
   Tl.SetTextSize(0.05);
   Tl.SetTextFont(42);
   Tl.DrawLatex(0.18,0.91, "#font[61]{CMS}");
-  Tl.DrawLatex(0.56,0.97, "#scale[0.8]{PbPb 0.58 nb^{-1} (5.02 TeV)}");
+  Tl.DrawLatex(0.36,0.97, "#scale[0.8]{PbPb 0.58 nb^{-1}, pp 252 nb^{-1} (5.02 TeV)}");
 
   TLatex Tl2;
   Tl.SetNDC();
