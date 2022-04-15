@@ -21,7 +21,7 @@ void pp_pt_spectra_data_model(){
 
   TFile *f_pp_crosssection = new TFile("root_file/pp_crosssection_withsys.root");
   TFile *f_PbPb_yield = new TFile("root_file/differential_yield_090_010_withsys.root");
-  TFile *f_pythia8 = new TFile("root_file/cross_CR2_soft_nonDiffractive_ON_1B_EvtGen.root");
+  TFile *f_pythia8 = new TFile("root_file/cross_CR2_soft_nonDiffractive_ON_1B_EvtGen_wD0.root");
   TFile *f_pp_GMVFNS_1y1 = new TFile("root_file/GMVFNS_pp_model.root");
   TFile *f_pp_GMVFNS_299 = new TFile("root_file/GMVFNS_pp_model_229.root");
 

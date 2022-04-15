@@ -17,7 +17,7 @@
 void combine_pp_LcD0(){
 
   TFile *f_pp_crosssection = new TFile("root_file/pp_LcD0_withsys.root");
-  TFile *f_CR2 = new TFile("root_file/pp_Lc_D0_ratio_data_withstatistic_CR2predictions.root");
+  TFile *f_CR2 = new TFile("root_file/cross_CR2_soft_nonDiffractive_ON_1B_EvtGen_wD0.root");
   TFile *f_greco_low = new TFile("root_file/Plumari_pp_low.root");
   TFile *f_greco_high = new TFile("root_file/Plumari_pp_high.root");
 
@@ -34,7 +34,16 @@ void combine_pp_LcD0(){
   }
 
   TGraphErrors *pp_crosssection_sys = (TGraphErrors*)f_pp_crosssection->Get("pp_crosssection_sys");
-  TH1F *h_CR2 = (TH1F*)f_CR2->Get("h_CR2_ratio")->Clone("h_CR2");
+
+  TH1F *hLc = (TH1F*)f_CR2->Get("hLc")->Clone("hLc");
+  TH1F *hB2Lc = (TH1F*)f_CR2->Get("hB2Lc")->Clone("hB2Lc");
+  TH1F *hD0 = (TH1F*)f_CR2->Get("hD0")->Clone("hD0");
+  TH1F *hB2D0 = (TH1F*)f_CR2->Get("hB2D0")->Clone("hB2D0");
+  hLc->Add(hB2Lc, -1);
+  hD0->Add(hB2D0, -1);
+  TH1F *h_CR2 = (TH1F*)hLc->Clone("h_CR2");
+  h_CR2->Divide(hD0);
+
   TGraph *ralf_pp_high = (TGraph*) f_ralf_pp_high->Get("MyGraph");
   TGraph *ralf_pp_low = (TGraph*) f_ralf_pp_low->Get("MyGraph");
   TGraph *ralf_pp = new TGraph(120);
@@ -96,6 +105,7 @@ void combine_pp_LcD0(){
 
   h_CR2->SetLineColor(kMagenta-4);
   h_CR2->SetMarkerStyle(24);
+  h_CR2->SetMarkerSize(1.5);
   h_CR2->SetMarkerColor(kMagenta-4);
   h_CR2->Draw("Esame");
 
