@@ -418,7 +418,7 @@ void pp_pt_spectra_data_model(){
   h_empty2->SetMarkerStyle(20);
   h_empty2->SetMarkerSize(2.2);
   h_empty2->SetLineColor(2);
-  h_empty2->SetMaximum(8.8);
+  h_empty2->SetMaximum(9.8);
   h_empty2->Draw();
 
 
@@ -504,10 +504,10 @@ void pp_pt_spectra_data_model(){
     // data/(model +/ theory error)
     GM1_model_low[i] = abs(py[i]/(y_GM1[i]+err_high_GM1[i]) - py[i]/y_GM1[i]);
     GM1_model_high[i] = abs(py[i]/(y_GM1[i]-err_low_GM1[i]) - py[i]/y_GM1[i]);
-    GM299_model_high[i] = abs(py[i]/(y_GM299[i]+err_high_GM299[i]) - py[i]/y_GM299[i]);
-    GM299_model_low[i] = abs(py[i]/(y_GM299[i]-err_low_GM299[i]) - py[i]/y_GM299[i]);
-    pythia_model_high[i]= abs(py[i]/(y_pythia[i] + err_high_pythia[i]) - py[i]/y_pythia[i]);
-    pythia_model_low[i]= abs(py[i]/(y_pythia[i] - err_low_pythia[i]) - py[i]/y_pythia[i]);
+    GM299_model_low[i] = abs(py[i]/(y_GM299[i]+err_high_GM299[i]) - py[i]/y_GM299[i]);
+    GM299_model_high[i] = abs(py[i]/(y_GM299[i]-err_low_GM299[i]) - py[i]/y_GM299[i]);
+    pythia_model_low[i]= abs(py[i]/(y_pythia[i] + err_high_pythia[i]) - py[i]/y_pythia[i]);
+    pythia_model_high[i]= abs(py[i]/(y_pythia[i] - err_low_pythia[i]) - py[i]/y_pythia[i]);
   }
 
   TGraphAsymmErrors *g_cross_stat_GM1 = new TGraphAsymmErrors(9,x,ratio_GM1,x_err,x_err,ratio_data_GM1_low,ratio_data_GM1_high);
