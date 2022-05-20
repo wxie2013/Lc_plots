@@ -44,6 +44,16 @@ void combine_pp_LcD0(){
   TH1F *h_CR2 = (TH1F*)hLc->Clone("h_CR2");
   h_CR2->Divide(hD0);
 
+  const int nq = h_CR2->GetNbinsX();
+  Double_t xq[nq];  // position where to compute the quantiles in [0,1]
+  Double_t yq[nq];  // array to contain the quantiles
+  for(int i = 0; i<nq; i++) {
+    xq[i] = h_CR2->GetBinCenter(i+1);
+    yq[i] = h_CR2->GetBinContent(i+1);
+  }
+  TGraph *g_CR2 = new TGraph(nq, xq, yq);
+  g_CR2->SetLineWidth(2);
+
   TGraph *ralf_pp_high = (TGraph*) f_ralf_pp_high->Get("MyGraph");
   TGraph *ralf_pp_low = (TGraph*) f_ralf_pp_low->Get("MyGraph");
   TGraph *ralf_pp = new TGraph(120);
@@ -103,11 +113,12 @@ void combine_pp_LcD0(){
   h_empty->SetMarkerSize(2);
   h_empty->SetLineColor(1);
 
-  h_CR2->SetLineColor(kMagenta-4);
-  h_CR2->SetMarkerStyle(24);
-  h_CR2->SetMarkerSize(1.5);
-  h_CR2->SetMarkerColor(kMagenta-4);
-  h_CR2->Draw("Esame");
+  g_CR2->SetLineColor(kMagenta-4);
+  //h_CR2->SetLineColor(kMagenta-4);
+  //h_CR2->SetMarkerStyle(24);
+  //h_CR2->SetMarkerSize(1.5);
+  //h_CR2->SetMarkerColor(kMagenta-4);
+  g_CR2->Draw("csame");
 
   pp_crosssection_sys->SetMarkerColor(1);
   pp_crosssection_sys->SetMarkerStyle(20);
@@ -168,7 +179,7 @@ void combine_pp_LcD0(){
 
   auto leg = new TLegend(0.49,0.70,0.92,0.90);
   leg->AddEntry(pp_crosssection_sys,"Data","fpe");
-  leg->AddEntry(h_CR2,"CR2 prediction","p");
+  leg->AddEntry(g_CR2,"CR2 prediction","l");
   leg->AddEntry(greco_pp,"PLB821 (2021) 136622","f");
   leg->AddEntry(ralf_pp,"PLB795 (2019) 117","f");
   leg->SetTextSize(0.04);
