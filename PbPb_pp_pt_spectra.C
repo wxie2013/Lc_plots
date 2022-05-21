@@ -39,7 +39,7 @@ void PbPb_pp_pt_spectra(){
   gPad->SetLogy();
   gPad->SetTopMargin(0.06);
   gPad->SetRightMargin(0.05);
-  gPad->SetLeftMargin(0.155);
+  gPad->SetLeftMargin(0.20);
 
   const Int_t NBINS = 10+2; //+2 mean leave space for plot edges
   Double_t edges[NBINS + 1]={2, 3,4,5,6,8,10,12.5,15,20,30,40, 40.5};
@@ -48,7 +48,7 @@ void PbPb_pp_pt_spectra(){
   h_empty->GetXaxis()->CenterTitle();
   h_empty->GetYaxis()->CenterTitle();
   h_empty->GetXaxis()->SetTitleOffset(1.0);
-  h_empty->GetYaxis()->SetTitleOffset(1.6);
+  h_empty->GetYaxis()->SetTitleOffset(2.0);
   h_empty->GetXaxis()->SetLabelOffset(0.007);
   h_empty->GetYaxis()->SetLabelOffset(0.007);
   h_empty->GetXaxis()->SetTitleSize(0.04);
@@ -266,7 +266,7 @@ void PbPb_pp_pt_spectra(){
   Tl.SetTextAlign(12);
   Tl.SetTextSize(0.05);
   Tl.SetTextFont(42);
-  Tl.DrawLatex(0.18,0.92, "#font[61]{CMS}");
+  Tl.DrawLatex(0.22,0.92, "#font[61]{CMS}");
   Tl.DrawLatex(0.32,0.97, "#scale[0.8]{PbPb 0.58 nb^{-1}, pp 252 nb^{-1} (5.02 TeV)}");//pp
 
   TLatex Tl2;
@@ -274,7 +274,7 @@ void PbPb_pp_pt_spectra(){
   Tl.SetTextAlign(12);
   Tl.SetTextSize(0.05*0.75);
   Tl.SetTextFont(42);
-  Tl.DrawLatex(0.29,0.92, "#font[52]{Preliminary}");
+  Tl.DrawLatex(0.33,0.92, "#font[52]{Preliminary}");
 
   auto leg = new TLegend(0.65,0.73,0.87,0.83);
   leg->AddEntry(pp_crosssection_sys,"Data","fpe");
@@ -330,7 +330,7 @@ void PbPb_pp_pt_spectra(){
 
 
   TLatex* tex_6;
-  tex_6 = new TLatex(0.18,0.87,"|y| < 1");
+  tex_6 = new TLatex(0.22,0.87,"|y| < 1");
   tex_6->SetNDC();
   tex_6->SetTextFont(42);
   tex_6->SetTextSize(0.04);
